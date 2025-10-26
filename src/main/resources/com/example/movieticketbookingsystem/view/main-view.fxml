@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+
+<BorderPane fx:id="mainPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.movieticketbookingsystem.MainController">
+    <top>
+        <VBox alignment="CENTER" prefHeight="50.0" style="-fx-background-color: #333;">
+            <children>
+                <Label text="Movie Ticket Booking" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" />
+            </children>
+        </VBox>
+    </top>
+    <bottom>
+        <VBox alignment="CENTER" prefHeight="30.0" style="-fx-background-color: #333;">
+            <children>
+                <Label text="© 2023 MovieBooking. All rights reserved." style="-fx-text-fill: gray; -fx-font-size: 12px;" />
+            </children>
+        </VBox>
+    </bottom>
+    <!-- The center will be dynamically loaded with other views -->
+</BorderPane>

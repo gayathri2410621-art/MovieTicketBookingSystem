@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="MovieBookingPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- List all entity classes -->
+        <class>com.example.movieticketbookingsystem.model.Movie</class>
+        <class>com.example.movieticketbookingsystem.model.Theater</class>
+        <class>com.example.movieticketbookingsystem.model.Screen</class>
+        <class>com.example.movieticketbookingsystem.model.Seat</class>
+        <class>com.example.movieticketbookingsystem.model.Show</class>
+        <class>com.example.movieticketbookingsystem.model.Booking</class>
+        <class>com.example.movieticketbookingsystem.model.Ticket</class>
+
+        <properties>
+            <!-- Oracle Database Connection (Using dedicated moviedb user in XEPDB1) -->
+            <property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+
+            <!-- CRITICAL: Use XEPDB1 (pluggable database) with forward slash / -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521/XEPDB1"/>
+
+            <!-- Using the newly created moviedb user -->
+            <property name="jakarta.persistence.jdbc.user" value="moviedb"/>
+            <property name="jakarta.persistence.jdbc.password" value="moviedb123"/>
+
+            <!-- Hibernate Dialect - CORRECTED: Using OracleDialect instead of deprecated Oracle12cDialect -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+
+            <!-- Schema auto-generation: update will create tables if they don't exist -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <!-- SQL Logging - helps with debugging -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+
+            <!-- Highlight SQL in console (optional, useful for debugging) -->
+            <property name="hibernate.highlight_sql" value="true"/>
+
+            <!-- Connection Pool Settings (C3P0) -->
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="300"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+
+            <!-- Performance Settings -->
+            <property name="hibernate.jdbc.batch_size" value="10"/>
+            <property name="hibernate.order_inserts" value="true"/>
+            <property name="hibernate.order_updates" value="true"/>
+
+            <!-- Connection validation -->
+            <property name="hibernate.connection.provider_disables_autocommit" value="false"/>
+
+            <!-- Second-level cache (disabled for now) -->
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
+            <property name="hibernate.cache.use_query_cache" value="false"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

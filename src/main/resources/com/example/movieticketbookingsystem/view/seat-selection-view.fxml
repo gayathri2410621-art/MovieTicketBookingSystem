@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.movieticketbookingsystem.view.SeatSelectionController"
+            prefHeight="750.0" prefWidth="1000.0"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Top Header with Movie Info -->
+    <top>
+        <VBox style="-fx-background-color: #2c3e50;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Back Button + Movie Info -->
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <Button text="← Back to Shows" onAction="#handleBack"
+                        style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 8 20; -fx-background-radius: 5;"/>
+
+                <VBox spacing="5">
+                    <Label fx:id="movieTitleLabel" text="Movie Title" textFill="white">
+                        <font>
+                            <Font name="System Bold" size="24"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="showTimeLabel" text="Show Time" textFill="white" style="-fx-font-size: 14;"/>
+                    <Label fx:id="screenInfoLabel" text="Screen Info" textFill="white" style="-fx-font-size: 14;"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center Content - Seat Grid -->
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <!-- Screen Label -->
+            <Label text="🎬 SCREEN" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Separator prefWidth="600" style="-fx-background-color: #3498db;"/>
+
+            <!-- Seat Grid -->
+            <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: transparent;">
+                <GridPane fx:id="seatGridPane" alignment="CENTER" hgap="8" vgap="8"
+                          style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 10; -fx-border-color: #ddd; -fx-border-radius: 10;"/>
+            </ScrollPane>
+
+            <!-- Legend -->
+            <HBox spacing="30" alignment="CENTER">
+                <HBox spacing="5" alignment="CENTER">
+                    <Region style="-fx-background-color: #27ae60; -fx-min-width: 20; -fx-min-height: 20; -fx-background-radius: 3;"/>
+                    <Label text="Available" style="-fx-font-size: 12;"/>
+                </HBox>
+                <HBox spacing="5" alignment="CENTER">
+                    <Region style="-fx-background-color: #3498db; -fx-min-width: 20; -fx-min-height: 20; -fx-background-radius: 3;"/>
+                    <Label text="Selected" style="-fx-font-size: 12;"/>
+                </HBox>
+                <HBox spacing="5" alignment="CENTER">
+                    <Region style="-fx-background-color: #95a5a6; -fx-min-width: 20; -fx-min-height: 20; -fx-background-radius: 3;"/>
+                    <Label text="Booked" style="-fx-font-size: 12;"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- Bottom Summary with Pricing and Booking Button -->
+    <bottom>
+        <VBox style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-width: 1 0 0 0;">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+
+            <HBox spacing="40" alignment="CENTER">
+                <!-- Selected Seats -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Selected Seats:" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <FlowPane fx:id="selectedSeatsFlowPane" hgap="8" vgap="8" prefWrapLength="400"/>
+                </VBox>
+
+                <!-- Spacer -->
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Total Price -->
+                <VBox spacing="5" alignment="CENTER_RIGHT">
+                    <Label text="Total Price:" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label fx:id="totalPriceLabel" text="₹0.00" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                </VBox>
+
+                <!-- Confirm Booking Button -->
+                <Button text="Confirm Booking" onAction="#handleConfirmBooking"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-padding: 15 40; -fx-background-radius: 8; -fx-cursor: hand;">
+                    <font>
+                        <Font name="System Bold" size="16"/>
+                    </font>
+                </Button>
+            </HBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>
